@@ -9,8 +9,16 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%if flash[:alert]%>
+      <div class="alert alert-danger">
+        <strong>Alerta!</strong> <%= alert %>
+      </div>
+    <%end%>
+    <%if flash[:notice]%>
+      <div class="alert alert-info">
+        <strong>Atención!</strong> <%= notice %>
+      </div>
+    <%end%>
     <% if user_signed_in? %>
     <li>
       <%= link_to('Edit registration', edit_user_registration_path) %>
