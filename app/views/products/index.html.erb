@@ -1,0 +1,30 @@
+<h1>Listado de Productos</h1>
+<p>Actualmente hay <%=@products_count%> productos en base de datos</p>
+<table>
+<tr>
+  <th>ID</th>
+  <th>Nombre</th>
+  <th>Descripcion</th>
+  <th>Precio</th>
+  <th>Categoría</th>
+  <th><%=link_to 'nuevo', new_product_path%></th>
+</tr>
+<%@products.each do |product|%>
+<tr>
+  <td><%= product.id%></td>
+  <td><%= product.nombre%></td>
+  <td><%= product.descripcion%></td>
+  <td><%='$' + product.precio.to_s%></td>
+  <td><%= product.categoria%></td>
+  <td><%=link_to 'editar', edit_product_path(product.id)%> | <%=link_to 'eliminar', product_path(product.id), method: :delete%></td>
+</tr>
+<%end%>
+</table>
+<% if user_signed_in? && current_user.rol == "admin"%>
+<br />
+<br />
+<hr />
+<center>
+  <img src = "https://img.huffingtonpost.com/asset/59c719bb1a00002400f08366.jpeg?ops=scalefit_720_noupscale"/>
+</center>
+<%end%>
