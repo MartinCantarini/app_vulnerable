@@ -30,7 +30,6 @@ class FlagsController < ApplicationController
 
   def show
     if params[:id].present? && params[:token].present?
-      binding.pry
       flag = Flag.where('id = ? and token = ?', params[:id], params[:token]).first
       render json:
       {
