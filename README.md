@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Endpoints para manejo de flags:
 
-Things you may want to cover:
+* setear flag => /set_flag?content={{contenido_del_flag}}&token={{token_del_flag}}
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* obtener flag => /get_flag?id={{id}}&token={{token_del_flag}}
