@@ -1,4 +1,5 @@
 class FlagsController < ApplicationController
+  protect_from_forgery with: :null_session
 
   def new
     if params[:token].present? && params[:content].present?
@@ -7,7 +8,7 @@ class FlagsController < ApplicationController
         render json:
         {
           status: 'Ok',
-          message: 'Flag seteada con éxito',
+          message: 'Flag establecido con éxito',
           flag_id: flag.id,
           token: flag.token,
           valor: flag.content

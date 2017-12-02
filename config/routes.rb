@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'set_flag', to: 'flags#new'
+  post 'set_flag', to: 'flags#new'
   get 'get_flag', to: 'flags#show'
 
   get 'others/index'
