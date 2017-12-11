@@ -32,7 +32,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    binding.pry
     @product = Product.new(products_params)
     if @product.save
       redirect_to products_path

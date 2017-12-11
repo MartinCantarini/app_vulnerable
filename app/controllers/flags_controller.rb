@@ -2,28 +2,35 @@ class FlagsController < ApplicationController
   protect_from_forgery with: :null_session
 
   def new
-    if params[:token].present? && params[:content].present?
-      flag = Flag.new(token: params[:token], content: params[:content])
+    if params[:id].present? && params[:content].present?
+      token = SecureRandom.uuid
+      id_flag = params[:id].to_i
+      if Flag.exists?(id_flag: id_flag)
+        return render json:
+        {
+          status: :error,
+          message: 'Ya existe un flag con ese id'
+        }
+      end
+      flag = Flag.new(id_flag: id_flag,token: token, content: params[:content])
       if flag.save
         render json:
         {
-          status: 'Ok',
+          status: :ok,
           message: 'Flag establecido con éxito',
-          flag_id: flag.id,
-          token: flag.token,
-          valor: flag.content
+          token: flag.token
         }
       else
         render json:
         {
-          status: 'Error',
+          status: :error,
           message: 'No se pudo setear el flag'
         }
       end
     else
       render json:
       {
-        status: 'Error',
+        status: :error,
         message: 'Falta el parametro token o content para crear el flag'
       }
     end
@@ -41,7 +48,7 @@ class FlagsController < ApplicationController
     else
       render json:
       {
-        status: 'Error',
+        status: :error,
         message: 'Falta el parametro id o token para obtener el flag'
       }
     end

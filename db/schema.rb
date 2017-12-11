@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20171125153303) do
 
   create_table "flags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "id_flag"
     t.string "content"
     t.string "token"
     t.datetime "created_at", null: false
