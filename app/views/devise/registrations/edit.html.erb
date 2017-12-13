@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar Perfil</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -13,35 +13,33 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label 'Contraseña' %> <i> (dejar en blanco sino desea cambiar la contraseña)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> caracteres como mínimo</em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label 'Confirmar nueva contraseña' %> <i>(dejar en blanco sino desea cambiar la contraseña)</i><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label 'Contraseña actual' %> <i></i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= f.hidden_field :rol, value: 'user' %>
   </div>
-
+  <br />
   <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+    <%= f.submit "Actualizar" %>
+  </div><br /><br />
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<p>Desea eliminar su cuenta? <%= button_to "Eliminar mi cuenta", registration_path(resource_name), data: { confirm: "Estás seguro?" }, method: :delete %></p>

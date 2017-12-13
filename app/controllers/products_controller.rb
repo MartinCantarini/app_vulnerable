@@ -4,10 +4,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @products_count = @products.count
-    @flag = Flag.last.content
-    @flag_part = @flag.chars.each_slice(@flag.size/2+1).map(&:join)
-    @flag_h=@flag_part[0]
-    @flag_l=@flag_part[1]
+    @flag = Flag.count.zero? ? 'flag: no disponible' : 'flag: ' + Flag.last.content
   end
 
   def show

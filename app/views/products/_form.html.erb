@@ -1,7 +1,7 @@
 <%=form_for @product do |p|%>
-  Nombre: <%=p.text_field :nombre%>
-  Descripcion: <%=p.text_field :descripcion%>
-  Precio: <%=p.number_field :precio%>
-  Categoria: <%=p.select :categoria, options_for_select([['Electro'], ['Hogar'], ['Belleza']])%>
+  Nombre: <%=p.text_field :nombre, required: true%><br/><br/>
+  Descripcion: <%=p.text_field :descripcion, required: true%><br/><br/>
+  Precio: <%=p.number_field :precio, required: true%><br/><br/>
+  Categoria: <%=p.select :categoria, options_for_select(['Electro', 'Hogar', 'Belleza'], p.object.categoria)%><br/><br/>
   <%=p.submit 'Continuar'%>
 <%end%>

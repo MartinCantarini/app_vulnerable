@@ -11,51 +11,35 @@
   </head>
 
   <body>
-    <%if flash[:alert]%>
-      <div class="alert alert-danger">
-        <strong>Alerta!</strong> <%= alert %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+        <br />
+        <p style="text-align: right;">
+          <% if user_signed_in? %>
+              <%= link_to('Editar Perfil', edit_user_registration_path) %> |
+              <%= link_to('Salir', destroy_user_session_path, method: :delete) %>
+            </li>
+          <% else %>
+              <%= link_to('Registrarse', new_user_registration_path)  %> |
+              <%= link_to('Iniciar Sesión', new_user_session_path)  %>
+          <% end %>
+        </p>
+        <%if flash[:alert]%>
+          <div class="alert alert-danger">
+            <strong>Alerta!</strong> <%= alert %>
+          </div>
+        <%end%>
+        <%if flash[:notice]%>
+          <div class="alert alert-info">
+            <strong>Atención!</strong> <%= notice %>
+          </div>
+        <%end%>
+        <%= yield %><br />
+        <%=link_to 'Volver', :back%>
       </div>
-    <%end%>
-    <%if flash[:notice]%>
-      <div class="alert alert-info">
-        <strong>Atención!</strong> <%= notice %>
-      </div>
-    <%end%>
-    <% if user_signed_in? %>
-    <li>
-      <%= link_to('Edit registration', edit_user_registration_path) %>
-      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-    </li>
-    <% else %>
-      <li>
-      <%= link_to('Register', new_user_registration_path)  %>
-      <%= link_to('Login', new_user_session_path)  %>
-      </li>
-    <% end %>
-    <%= yield %>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-  </body>
-</html>
-
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Hello, world!</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>

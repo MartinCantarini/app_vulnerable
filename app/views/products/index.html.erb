@@ -7,7 +7,10 @@
   <th>Descripcion</th>
   <th>Precio</th>
   <th>Categoría</th>
-  <th><%=link_to 'nuevo', new_product_path%></th>
+  <th><% if current_user.rol == 'admin'%>
+        <%=link_to 'nuevo', new_product_path%>
+      <%end%>
+    </th>
 </tr>
 <%@products.each do |product|%>
 <tr>
@@ -16,7 +19,11 @@
   <td><%= product.descripcion%></td>
   <td><%='$' + product.precio.to_s%></td>
   <td><%= product.categoria%></td>
-  <td><%=link_to 'editar', edit_product_path(product.id)%> | <%=link_to 'eliminar', product_path(product.id), method: :delete%></td>
+  <td>
+    <% if current_user.rol == 'admin'%>
+      <%=link_to 'editar', edit_product_path(product.id)%> | <%=link_to 'eliminar', product_path(product.id), method: :delete%>
+    <%end%>
+  </td>
 </tr>
 <%end%>
 </table>
@@ -24,8 +31,6 @@
 <br />
 <br />
 <hr />
-<%=@flag_h%>
-<!-- <div id="flag" style="display:none"> -->
-  <%=@flag_l%>
-<!-- </div> -->
+
+<center><span style="color:red;"><%=@flag%></span></center>
 <%end%>
