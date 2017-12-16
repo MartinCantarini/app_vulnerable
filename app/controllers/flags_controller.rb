@@ -41,9 +41,10 @@ class FlagsController < ApplicationController
       flag = Flag.where('id = ? and token = ?', params[:id], params[:token]).first
       render json:
       {
+        status: :ok,
         flag_id: flag.id,
         token: flag.token,
-        valor: flag.content
+        contenido: flag.content
       }
     else
       render json:

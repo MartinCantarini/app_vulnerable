@@ -15,6 +15,7 @@
       <div class="row">
         <div class="col-md-12">
         <br />
+        <p style="text-align: left;"><%=link_to 'Inicio', :root%></p>
         <p style="text-align: right;">
           <% if user_signed_in? %>
               <%= link_to('Editar Perfil', edit_user_registration_path) %> |
