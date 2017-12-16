@@ -12,5 +12,3 @@
 /get_flag?id={{id}}&token={{token_del_flag}}
 
 ```
-
-## Explicación de la vulnerabilidad
