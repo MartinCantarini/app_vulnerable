@@ -38,14 +38,22 @@ class FlagsController < ApplicationController
 
   def show
     if params[:id].present? && params[:token].present?
-      flag = Flag.where('id = ? and token = ?', params[:id], params[:token]).first
-      render json:
-      {
-        status: :ok,
-        flag_id: flag.id,
-        token: flag.token,
-        contenido: flag.content
-      }
+      flag = Flag.where('id_flag = ? and token = ?', params[:id], params[:token]).first
+      if flag.present?
+        render json:
+        {
+          status: :ok,
+          flag_id: flag.id_flag,
+          token: flag.token,
+          contenido: flag.content
+        }
+      else
+        render json:
+        {
+          status: :error,
+          message: 'No existe un flag con esas características'
+        }
+      end
     else
       render json:
       {
