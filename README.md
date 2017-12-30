@@ -18,7 +18,11 @@
 ## Abrir una consola y ejecutar los siguiente comandos:
 * git clone https://github.com/MartinCantarini/app_vulnerable.git
 * cd app_vulnerable
-* docker build -t app_vulnerable .
 * docker-compose build
-* docker-compose run app bundle exec rake db:create db:migrate db:seed
+* docker-compose run app rake db:create 
+* docker-compose run app rake db:migrate db:seed
+* docker-compose run app rake db:seed
 * docker-compose up
+
+
+* Si ocurre un error al tratar de crear la base de datos, volver a intentar. 
